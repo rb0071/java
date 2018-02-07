@@ -93,7 +93,7 @@ public class Operator {
 		        .toString());
 
 		// try-with-resources statement based on post comment below :)
-		try (FileWriter fileWrite = new FileWriter("D:/file1.json")) {
+		try (FileWriter fileWrite = new FileWriter("D:/customer_json.json")) {
 			fileWrite.write(jsonObject.toString());
 			System.out.println("Successfully Copied JSON Object to File...");
 			//System.out.println("\nJSON Object: " + obj);
