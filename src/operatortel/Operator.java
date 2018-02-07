@@ -45,15 +45,16 @@ public class Operator {
 					java.util.Date startTime = timeFormat.parse(splited[1]);
 					java.util.Date endTime = timeFormat.parse(splited[2]);
 					long difference = endTime.getTime() - startTime.getTime();
-					//System.out.println("difference... "+difference/1000);
-					if ((difference/1000)/60 > 60) {
-						System.out.println("difference... "+df.format((float)(difference/1000)/60));
+					//System.out.println("endTime.getTime()... "+endTime.getTime());
+					if ((difference/1000) > 60) {
+						System.out.println(splited[3]+" : "+(difference/1000)+" difference... "+df.format((float)(difference/1000)/60));
 						dateUse = splited[0];
 						telephone = splited[3];
-						priceSum = (float)(difference/1000)/60;
+						priceSum = (((float)(difference/1000)/60)-1)+3;
 						promotion = splited[4];
 					}else {
 						long minute = (difference/1000);
+						//System.out.println((difference/1000)+" difference... "+df.format((float)(difference/1000)/60));
 						System.out.println(splited[3]+" Secound "+minute+" 3 บาท");
 						dateUse = splited[0];
 						telephone = splited[3];
@@ -92,7 +93,7 @@ public class Operator {
 		        .put("customer", array)
 		        .toString());
 
-		// try-with-resources statement based on post comment below :)
+		//save file to
 		try (FileWriter fileWrite = new FileWriter("D:/customer_json.json")) {
 			fileWrite.write(jsonObject.toString());
 			System.out.println("Successfully Copied JSON Object to File...");
